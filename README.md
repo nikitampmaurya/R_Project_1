@@ -1,5 +1,14 @@
 # R_projects
 
+# Objective:
+
+The primary objective of this project is to analyze gene expression data from breast cancer tissues and their corresponding normal tissues to understand the differential expression. 
+
+# key Accomplishment: 
+
+- Utilized R programming with packages such as dplyr, tidyverse, ggplot2, and GEOquery to preprocess, analyze, and visualize gene expression data.
+- Created various plots (bar plots, density plots, box plots, and scatter plots) to illustrate the expression patterns of key genes (e.g. BRCA1, BRCA2, TP53) and their correlation with breast cancer progression and metastasis.
+  
 # About DATA 
 
 Link: (NCBI GEO DATASETS - GSE183947) - https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE183947
