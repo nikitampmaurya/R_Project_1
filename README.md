@@ -6,13 +6,13 @@ Link: (NCBI GEO DATASETS - GSE183947) - https://www.ncbi.nlm.nih.gov/geo/query/a
 
 Dataset Overview: 
 
-Breast cancer is one of the most common cancers globally, affecting millions of women each year. This dataset, GSE183947, is associated with breast cancer tissue and includes RNA sequencing data from 30 pairs of normal and cancerous tissues. The RNA sequencing reads were normalized as Fragments Per Kilobase of transcript per Million mapped reads (FPKM) data.
+Breast cancer is one of the most common cancers globally, affecting millions of women each year. The GSE183947 dataset is associated with breast cancer tissue and includes RNA sequencing data from 30 pairs of normal and cancerous tissues. The RNA sequencing reads were normalized as Fragments Per Kilobase of transcript per Million mapped reads (FPKM) data.
 
-There are two methods to measure gene expression: DNA microarray and RNA sequencing.
+# What is RNA Sequencing (RNA-seq)? 
 
-# RNA Sequencing (RNA-seq)
+There are two methods to measure gene expression: DNA microarray and RNA sequencing. 
 
-Process: mRNA is extracted from both samples (normal and tumour samples) fragmented into smaller pieces, and then transcribed into cDNA using the reverse transcription method. Short DNA sequences called adapters are added to the ends of the cDNA fragments. These adapters are necessary for binding the cDNA to the sequencing platform. cDNA fragments are then amplified using polymerase chain reaction (PCR) to create a library of cDNA fragments. cDNA library is loaded onto a sequencing platform (such as Illumina, PacBio, or Oxford Nanopore). The platform reads the sequences of the cDNA fragments. These reads are aligned to a reference genome (the number of reads that map to each gene or transcript is counted. This read count is proportional to the gene's expression level), and raw read counts are normalized to compensate for differences in sequencing depth and gene length. Common normalization methods include FPKM (Fragments Per Kilobase of transcript per Million mapped reads) and TPM (Transcripts Per Million). And at the end, we perform Differential Gene Expression Data Analysis using R.
+Process: mRNA is extracted from both samples (normal and tumour samples) fragmented into smaller pieces, and then transcribed into cDNA using the reverse transcription method. Short DNA sequences called adapters are added to the ends of the cDNA fragments. These adapters are necessary for binding the cDNA to the sequencing platform. cDNA fragments are then amplified using polymerase chain reaction (PCR) to create a library of cDNA fragments. cDNA library is loaded onto a sequencing platform (such as Illumina, PacBio, or Oxford Nanopore). The platform reads the sequences of the cDNA fragments. These reads are aligned to a reference genome (the number of reads that map to each gene or transcript is counted. This read count is proportional to the gene's expression level), and raw read counts are normalized to compensate for differences in sequencing depth and gene length. Common normalization methods include FPKM (Fragments Per Kilobase of transcript per Million mapped reads) and TPM (Transcripts Per Million). And ultimately, we perform Differential Gene Expression Data Analysis using R.
 
 # What is FPKM?  
 
