@@ -13,7 +13,7 @@ setwd("C:/Users/Nikita Maurya/OneDrive/Desktop/Nikita/Rfiles")
 
 ##########data visualization######
 
-new_df = data = read.csv("new_df.csv")
+new_df = read.csv("new_df.csv")
 
 dim(new_df)
 
