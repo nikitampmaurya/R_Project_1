@@ -5,7 +5,11 @@ library(plotly) #used for creating interactive
 library(Hmisc)
 
 
-getwd() 
+#fetch current dir
+getwd() #currently it is "C:/Users/Nikita Maurya/OneDrive/Documents"
+
+#changing directory
+setwd("C:/Users/Nikita Maurya/OneDrive/Desktop/Nikita/Rfiles")
 
 ##########data visualization######
 
