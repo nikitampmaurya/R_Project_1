@@ -1,7 +1,7 @@
 library(dplyr) #it is small part of tidyverse, used for manipulating dataframes
 library(tidyverse) #providing tools for data manipulation, visualization, and analysis.
 library(ggplot2) #to create different graphs
-library(plotly)
+library(plotly) #used for creating interactive
 library(Hmisc)
 
 
