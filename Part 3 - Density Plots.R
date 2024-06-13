@@ -55,6 +55,7 @@ new_df %>%
 #brac1 expression in most samples with no metastasis peak around 4 to 8 FPKM.
 #samples with metastasis exhibit a wider range of FPKM values, indicating potentially more variable BRCA1 expression.
 
+#plot4
 
 plot_brca1_meta = plot_ly(filtered_df, x = ~FPKM, color = ~Metastasis, type = 'histogram', histnorm = 'density', opacity = 0.3) %>%
   layout(title = "Histogram of FPKM and metastasis density for BRCA1",
@@ -83,7 +84,7 @@ new_df %>%
 filtered_df2 <- new_df %>%
   filter(Gene == "BRCA2")
 
-
+#plot2
 plot_brca2_density = plot_ly(filtered_df2, x = ~FPKM, color = ~Tissue, type = 'histogram', histnorm = 'density', opacity = 0.3) %>%
   layout(title = "Histogram Plot of FPKM for BRCA2",
          xaxis = list(title = "FPKM"),
@@ -97,4 +98,25 @@ plot_brca2_density
 #higher expression and density of breast tumor samples around 0 to 2 FPKM.
 #while normal breast tissue peak around 0 to 5 range.
 
+#plot3
 
+new_df %>%
+  filter(Gene == "BRCA2") %>%
+  ggplot(., aes(x = FPKM, fill = Metastasis)) +
+  geom_density(alpha = 0.3) +
+  ggtitle("Density of Metastasis for BRCA2")
+
+#samples without metastasis have peak values around 0 to 5.
+
+#plot4
+
+plot_brca2_meta = plot_ly(filtered_df2, x = ~FPKM, color = ~Metastasis, type = 'histogram', histnorm = 'density', opacity = 0.3) %>%
+  layout(title = "Histogram of FPKM and metastasis density for BRCA2",
+         xaxis = list(title = "FPKM"),
+         yaxis = list(title = "Density"),
+         barmode = "overlay",
+         legend = list(title = list(text = "Metastasis")))
+
+plot_brca2_meta
+
+#Same conclusion as above
