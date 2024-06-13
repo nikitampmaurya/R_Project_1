@@ -9,7 +9,7 @@ getwd() #currently it is "C:/Users/Nikita Maurya/OneDrive/Documents"
 #changing directory
 setwd("C:/Users/Nikita Maurya/OneDrive/Desktop/Nikita/Rfiles")
 
-new_df = read.csv("new_df")
+new_df = read.csv("new_df.csv")
 
 ########## density plot/ area plot ###########
 
