@@ -35,7 +35,7 @@ show(gse) #provides information about the retrieved GEO dataset
 
 metadata <- pData(phenoData(gse[[1]])) #to get phenotype data
 
-#View(metadata)
+#View(metadata) #name of the tissues, metastasis status, name of tissue samples, submission date, geoacession etc
 
 subset_metadata = select(metadata,c(1,10,11,17)) #extracted title, tissue (normal/tumour),metastasis status, description (later renamed as Samples)
 
