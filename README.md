@@ -2,7 +2,7 @@
 
 # Objective:
 
-The primary objective of this project is to analyze gene expression data from breast cancer and normal breast tissues to understand the differential expression. 
+The primary objective of this project is to analyze gene expression data of breast cancer and normal breast tissues to understand the differential expression. 
 
 # Key Accomplishment: 
 
