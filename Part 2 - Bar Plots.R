@@ -1,9 +1,8 @@
-library(dplyr) #it is small part of tidyverse, used for manipulating dataframes
+library(dplyr) #it is a small part of tidyverse, used for manipulating data frames
 library(tidyverse) #providing tools for data manipulation, visualization, and analysis.
 library(ggplot2) #to create different graphs
 library(plotly) #used for creating interactive
-library(Hmisc)
-
+library(Hmisc) 
 
 #fetch current dir
 getwd() #currently it is "C:/Users/Nikita Maurya/OneDrive/Documents"
