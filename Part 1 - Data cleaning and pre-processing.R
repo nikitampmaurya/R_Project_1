@@ -29,9 +29,9 @@ Sys.setenv("VROOM_CONNECTION_SIZE" = 131072 * 1000) #to avoid error
 
 show(gse) #provides information about the retrieved GEO dataset
 
-#in our case there are 60 samples in the dataset and lacks feature-level expression data and protocol information
-#class of the object, dimensions of the dataset, including the number of features (genes/probes) and samples.
-#Metadata such as the title, description, and number of samples and their names.
+#in our case there are 60 samples in the dataset
+#phenoData section shows that there are 60 sample names, ranging from GSM5574685 to GSM5574744. 
+#also includes 41 variable labels (e.g., title, geo_accession, tissue:ch1) that describe various attributes of the samples. 
 
 metadata <- pData(phenoData(gse[[1]])) #to get phenotype data
 
