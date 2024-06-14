@@ -1,5 +1,5 @@
 #key findings: 
-#1. The expression levels of BRCA2 are consistently higher across nearly all samples compared to BRCA1.
+#1. The expression levels of BRCA2 are consistently higher in nearly all samples compared to BRCA1.
 #2. Tissue samples (both normal and breast cancer) positive for metastasis exhibit significantly elevated FPKM values.
 
 
