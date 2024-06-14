@@ -1,7 +1,5 @@
-library(dplyr) #it is small part of tidyverse, used for manipulating dataframes
+library(dplyr) #it is a small part of tidyverse, used for manipulating dataframes
 library(tidyverse) #providing tools for data manipulation, visualization, and analysis.
-library(ggplot2) #to create different graphs
-library(plotly) #to interactive graphs
 library(GEOquery) #for accessing and retrieving data from the Gene Expression Omnibus (GEO) database.
 
 #fetch current dir
@@ -10,7 +8,7 @@ getwd() #currently it is "C:/Users/Nikita Maurya/OneDrive/Documents"
 #changing directory
 setwd("C:/Users/Nikita Maurya/OneDrive/Desktop/Nikita/Rfiles")
 
-#after manual downloading the data from ncbi GEO database
+#after manually downloading the data from NCBI GEO database
 #I have loaded the data
 #contains 30 pairs of normal and cancerous breast tissues 
 
