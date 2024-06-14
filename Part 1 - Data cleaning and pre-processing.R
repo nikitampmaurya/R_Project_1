@@ -35,9 +35,9 @@ show(gse) #provides information about the retrieved GEO dataset
 
 metadata <- pData(phenoData(gse[[1]])) #to get phenotype data
 
-#View(metadata) #name of the tissues, metastasis status, name of tissue samples, submission date, geoacession etc
+#View(metadata) #contains name of the tissues, metastasis status, name of tissue samples, submission date, geoacession etc
 
-subset_metadata = select(metadata,c(1,10,11,17)) #extracted title, tissue (normal/tumour),metastasis status, description (later renamed as Samples)
+subset_metadata = select(metadata,c(1,10,11,17)) #extracted title, tissue (normal/tumour), metastasis status, description (later renamed as Samples)
 
 #or use subset_metadata = metadata[,c(1,10,11,17)] #to select particular columns
 
@@ -56,22 +56,22 @@ subset_metadata$Metastasis <- gsub("metastasis: ", "", subset_metadata$Metastasi
 long_df <- data %>%
   gather(key = 'Samples', value = 'FPKM', -Gene) 
 
-#gather funtion turns columns into rows
+#gather function turns columns into rows
 
 #Samples contain all the columns and their values will be in FPKM 
 
-#-Gene means DO NOT fuck with Gene column
+#-Gene means DO NOT include Gene column
 
 #View(long_df)
 
 new_df <- long_df %>%
   left_join(., subset_metadata, by = c("Samples" = "Description"))
 
-#left join to keep all the rows of long_df and whereever key match, club together both df via common columns between two dataframe
+#left join to keep all the rows of long_df and wherever key match, club together both dfs via common columns
 
 View(new_df)
 
-########### to understand no of rows in metastasis #################
+########### to understand the no of rows in metastasis #################
 
 a = filter(new_df, Metastasis == "no") #or you can try new_df[new_df$Metastasis == "no",]
 
@@ -91,9 +91,9 @@ nrow(new_df)
 
 print(total)
 
-nrow(new_df) == total #there are same no of metastasis and non metastasis case
+nrow(new_df) == total #there are same no of metastasis and non-metastasis samples for each tissue.
 
-########### to understand if there's any na or NAN  #################
+########### to understand if there's any NA or NAN  #################
 
 has_na <- any(is.na(new_df))
 print(has_na) #there is no na data
@@ -124,28 +124,11 @@ e = new_df[new_df$Gene == "BRCA1" & new_df$Metastasis == "yes",]
 
 f = new_df[new_df$Gene == "BRCA1" & new_df$Metastasis == "no",] 
 
-#View(f) 
-
-
-####################### Calculating mean FPKM for BRAC1 and BRCA2 in both normal and tumor tissues #####################
-
-
-new_df %>%
-  filter(Gene == "BRCA1" | Gene == "BRCA2") %>%
-  group_by(Gene,Tissue) %>%
-  summarise(mean_FPKM = mean(FPKM)) %>%
-  arrange(desc(mean_FPKM))
-
-#BRCA1 and BRCA2 are tumor suppressor genes, involved in DNA damage repair.
-#Mutation in these gene leads to breast cancer.
-#Mutations in BRCA1 and BRCA2 generally lead to a decrease or loss of their gene function rather than an increase in gene expression.
-#According to the table, BRCA1 gene has the highest mean gene expression.
-#Mean FPKM value of BRCA1 gene is more in normal breast tissue as compared to tumor breast tissue.
-#followed by BRCA2 in normal breast tissue and finally BRCA2 breast tumor. 
+#View(f) #30 rows of BRCA1 gene with metastasis status no
 
 dim(new_df)
 
 file_path = "C:/Users/Nikita Maurya/OneDrive/Desktop/Nikita/Rfiles/new_df.csv"
 
-#saving this dataframe 
+#saving this data frame 
 write.csv(new_df, file_path, row.names = FALSE)
