@@ -16,7 +16,7 @@ setwd("C:/Users/Nikita Maurya/OneDrive/Desktop/Nikita/Rfiles")
 
 data = read.csv("GSE183947_fpkm.csv")
 
-dim(data) # 20246 rows and 61 columns #one extra column for names of the genes
+dim(data) # 20246 rows and 61 columns #one extra column for serial no of the genes
 
 #View(data)
 
