@@ -16,9 +16,9 @@ setwd("C:/Users/Nikita Maurya/OneDrive/Desktop/Nikita/Rfiles")
 
 data = read.csv("GSE183947_fpkm.csv")
 
-dim(data) # 20246 rows and 61 columns #one extra column for serial no of the genes
+dim(data) # 20246 rows and 61 columns #one extra column for name of the genes
 
-#View(data)
+#View(data) #name of the genes (observations) and 60 samples (variables)
 
 colnames(data)[1] = "Gene" #or rename using data <- rename(data, Gene = X)
 
