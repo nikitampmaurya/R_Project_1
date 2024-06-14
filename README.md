@@ -2,8 +2,7 @@
 
 # Objective:
 
-The primary objective of this project is to analyze gene expression data of breast cancer and normal breast tissues to understand the differential expression breast cancer genes.
-
+The primary objective of this project is to analyze gene expression data of breast cancer and normal breast tissues, understand the differential expression of breast cancer genes, and construct various interactive and impactful graphs.
 # Key Accomplishment: 
 
 - Utilized R programming with packages such as dplyr, tidyverse, ggplot2, and GEOquery to preprocess, analyze, and visualize gene expression data.
