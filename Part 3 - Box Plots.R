@@ -1,3 +1,9 @@
+#Key takeaway:
+
+#1. The box plots indicate that BRCA1 expression is generally higher than BRCA2 expression across both tissue types.
+#2. Tissue samples with metastasis exhibit higher expression levels of BRCA genes compared to non-metastatic samples.
+
+
 library(dplyr) #it is small part of tidyverse, used for manipulating dataframes
 library(tidyverse) #providing tools for data manipulation
 library(plotly) #to create interactive plot
@@ -75,4 +81,32 @@ plot_df1 #to view the plot
 
 #Overall expression of BRCA2 gene is more expressed in breast tissues that exhibit metastasis.
 #breast tumor samples have equivalent amount of BRCA2 expression in breast tumor.
+
+#Box plot 3
+
+filtered_df2 = new_df %>%
+  filter(Gene == "BRCA1" |  Gene == "BRCA2")
+
+View(filtered_df2)
+
+plot_df2 = plot_ly(
+  data = filtered_df2,
+  x = ~Gene,
+  y = ~FPKM,
+  type = "box",
+  color = ~Tissue,
+  colors = c("lightblue", "pink"),
+  boxpoints = 'all', #to show all points
+  jitter = 0.5 #to prevent overlapping, higher values spread the points more horizontall
+) %>%
+  layout(
+    title = "Expression of BRCA1 and BRCA2 based on tissues",
+    xaxis = list(title = "Genes"),
+    yaxis = list(title = "FPKM"),
+    boxmode = "group" # group boxes by Tissue and Metastasis
+)
+
+plot_df2
+
+#This box plot shows a higher expression of brca1 compared to brca2 in both tissues.
 
