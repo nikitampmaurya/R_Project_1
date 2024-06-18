@@ -1,6 +1,5 @@
 library(dplyr) #it is small part of tidyverse, used for manipulating dataframes
 library(tidyverse) #providing tools for data manipulation
-library(ggplot2) #to create different graphs
 library(plotly) #to create interactive plot
 
 #fetch current dir
@@ -16,28 +15,64 @@ new_df = read.csv("new_df.csv")
 
 #box plot1
 
-new_df %>%
-  filter(Gene == 'BRCA1') %>%
-  ggplot(., aes(x = Tissue, y = FPKM, fill = Metastasis)) +
-  geom_boxplot() +
-  scale_fill_manual(values = c("lightblue", "pink")) +
-  ggtitle("Expression of BRCA1 based on tissues and metastasis")
+filtered_df = new_df %>%
+  filter(Gene == "BRCA1") 
+
+#View(filtered_df) #30 samples of normal (half of them are positive for metastasis) and 30 samples of tumor samples (half of them are positive for metastasis).
+
+plot_df = plot_ly(
+  data= filtered_df,
+  x = ~Tissue,
+  y = ~FPKM,
+  type = "box",
+  color = ~Metastasis,
+  colors = c("lightblue", "pink"),
+  boxpoints = 'all', #to show all points
+  jitter = 0.5 #to prevent overlapping, higher values spread the points more horizontall
+) %>%
+  layout(
+    title = "Expression of BRCA1 based on tissues and metastasis",
+    xaxis = list(title = "Tissue"),
+    yaxis = list(title = "FPKM"),
+    boxmode = "group" # group boxes by Tissue and Metastasis
+  )
+
+plot_df #to view the plot
 
 #Each box plot shows the distribution of FPKM values within a tissue type
 #The color of the box plots (light blue or pink) indicates whether the samples are from metastatic or non-metastatic tissues. 
-#Since box plot of normal breast tissue without metastasis is smallest of all, and smaller than meatstasis box of the same tissue, it indicates that the FPKM values for metastatic samples have a very narrow range 
-#or lesser variability compared to metastatic samples within same tissue.
+#Since box plot of normal breast tissue without metastasis is smallest of all,it indicates that the FPKM values for non-metastatic samples have a very low FPKM (less than 10) and narrow range of FPKM (3 to 10). 
+#There are almost equivalent no of samples with similar amount of FPKM in breast tumor samples. 
+#indicating that BRAC1 expression is equivalent in breast cancer samples regardless of their metastasis expression
 #BRCA1 expression is lower in normal breast tissue compared to tumor tissue with metastasis (no) and 
 #highest in normal breast tissue with metastasis (yes).
-
-#surprisingly BRAC1 expression is equivalent in breast cancer samples regardless of their metastasis expression
-
+ 
 #box plot2 
-new_df %>%
-  filter(Gene == 'BRCA2') %>%
-  ggplot(., aes(x = Tissue, y = FPKM, fill = Metastasis)) +
-  geom_boxplot() +
-  scale_fill_manual(values = c("lightblue", "pink")) +
-  ggtitle("Expression of BRCA1 based on tissues and metastasis")
 
-#normal breast tissue without metastasis have narrow FPKM range compared to metastatasis samples of the same tissue.
+filtered_df1 = new_df %>%
+  filter(Gene == "BRCA2") 
+
+View(filtered_df2) #30 samples of normal (half of them are positive for metastasis) and 30 samples of tumor samples (half of them are positive for metastasis).
+
+plot_df1 = plot_ly(
+  data= filtered_df1,
+  x = ~Tissue,
+  y = ~FPKM,
+  type = "box",
+  color = ~Metastasis,
+  colors = c("lightblue", "pink"),
+  boxpoints = 'all', #to show all points
+  jitter = 0.5 #to prevent overlapping, higher values spread the points more horizontall
+) %>%
+  layout(
+    title = "Expression of BRCA2 based on tissues and metastasis",
+    xaxis = list(title = "Tissue"),
+    yaxis = list(title = "FPKM"),
+    boxmode = "group" # group boxes by Tissue and Metastasis
+  )
+
+plot_df1 #to view the plot
+
+#Overall expression of BRCA2 gene is more expressed in breast tissues that exhibit metastasis.
+#breast tumor samples have equivalent amount of BRCA2 expression in breast tumor.
+
