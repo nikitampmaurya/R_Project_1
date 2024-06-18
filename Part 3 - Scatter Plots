@@ -1,3 +1,8 @@
+Key takeaway:
+
+#1. There appears to be a positive correlation between the expression levels of both genes, BRCA1 and BRCA2. 
+#2. This suggests that as the FPKM values of BRCA1 increase, so do the FPKM values of BRCA2.
+
 library(dplyr)
 library(tidyverse)
 library(plotly)
