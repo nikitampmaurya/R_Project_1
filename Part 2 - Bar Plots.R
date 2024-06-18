@@ -1,5 +1,5 @@
 #key findings: 
-#1. The expression levels of BRCA2 are consistently higher in nearly all samples compared to BRCA1.
+#1. The expression levels of BRCA1 are consistently higher in nearly all samples compared to BRCA2.
 #2. Tissue samples (both normal and breast cancer) positive for metastasis exhibit significantly elevated FPKM values.
 
 
@@ -53,7 +53,7 @@ plotly_brca <- plot_ly(
 # Display the plot
 plotly_brca
 
-#clearly shows higher expression of BRCA2 compared to BRCA1 across all samples.
+#clearly shows higher expression of BRCA1 compared to BRCA2 across all samples.
 
 #barplot 2: Plot for BRCA1 expression based on metastasis across all samples
 
