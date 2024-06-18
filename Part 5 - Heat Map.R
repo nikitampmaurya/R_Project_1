@@ -1,3 +1,8 @@
+#Key Takeaway:
+#1. MYCN gene responsible Exhibits the lowest expression across all samples.
+#2 BRCA2 and ALK show almost similar expression levels in the samples.
+#3.TP53 is highly expressed in all samples.
+
 library(dplyr) #it is small part of tidyverse, used for manipulating dataframes
 library(tidyverse) #providing tools for data manipulation, visualization, and analysis.
 library(plotly)
@@ -45,8 +50,4 @@ plot_heatmap <- plot_ly(
 # Display the heatmap
 plot_heatmap
 
-#lighter color low expression, samples with darker color have higher expression for that gene
-#Mycn has lowest expression in all the samples
-#BRCA2 and ALK have almosr similar expression
-#while TP53 is highly expressed in all the samples
-
+#lighter colours indicate low expression levels, while darker colours signify higher expression levels for the respective gene.
