@@ -1,0 +1,94 @@
+library(dplyr)
+library(tidyverse)
+library(plotly)
+
+new_df = read.csv("new_df.csv")
+
+#View(new_df)
+
+####scatter plot ####
+
+filtered_df = new_df %>%
+  filter(Gene == "BRCA1" |  Gene == "BRCA2") %>%
+  spread(key = Gene, value = FPKM) 
+
+#View(filtered_df) #60 samples of BRCA1 and 60 samples of BRCA2, 
+
+plotly_df1 <- plot_ly(
+  data = filtered_df, 
+  x = ~BRCA1, 
+  y = ~BRCA2, 
+  color = ~Tissue,
+  symbol = ~Metastasis,
+  type = "scatter",
+  mode = "markers",
+  marker = list(size = 10, opacity = 0.6)
+) %>%
+  layout(
+    title = "Expression of BRCA1 vs BRCA2 based on metastasis and Tissues",
+    xaxis = list(title = "BRCA1 FPKM"),
+    yaxis = list(title = "BRCA2 FPKM"),
+    legend = list(title = "Tissue")
+  )
+
+
+plotly_df1
+
+#seems like there is positive correlation between expression of both genes
+#suggesting that FPKM values for both BRCA1 and BRCA2 increase together.
+
+
+plot_df2 <- plot_ly(
+  data = filtered_df,
+  x = ~BRCA1,
+  y = ~BRCA2,
+  color = ~Tissue,
+  symbol = ~Metastasis,
+  type = 'scatter',
+  mode = 'markers',
+  marker = list(size = 10, opacity = 0.6)
+) %>%
+  add_trace(
+    x = ~BRCA1,
+    y = fitted(lm(BRCA2 ~ BRCA1, data = filtered_df)),
+    mode = 'lines',
+    line = list(color = 'red'),
+    name = 'Linear Fit'
+  ) %>%
+  layout(
+    title = "BRCA1 vs BRCA2 Expression",
+    xaxis = list(title = "BRCA1 Expression (FPKM)"),
+    yaxis = list(title = "BRCA2 Expression (FPKM)")
+  )
+
+
+plot_df2
+
+#lm for fits a linear model to the data, estimating the relationship between BRCA1 and BRCA2 expression levels.
+
+#To indicate the positive correlation/slope/trend between both genes 
+
+plot_df3 <- plot_ly(
+  data = filtered_df,
+  x = ~BRCA1,
+  y = ~BRCA2,
+  type = 'scatter',
+  mode = 'markers',
+  color = ~Tissue,
+  colors = "Set1",
+  marker = list(size = 10, opacity = 0.6)
+) %>%
+  add_trace(
+    x = ~BRCA1,
+    y = fitted(lm(BRCA2 ~ BRCA1, data = spread_df)),
+    mode = 'lines',
+    line = list(color = 'green'),
+    name = 'Linear Fit'
+  ) %>%
+  layout(
+    title = "BRCA1 vs BRCA2 Expression",
+    xaxis = list(title = "BRCA1 Expression (FPKM)"),
+    yaxis = list(title = "BRCA2 Expression (FPKM)")
+  )
+
+plot_df3
