@@ -28,10 +28,9 @@ Fragments Per Kilobase of transcript per Million mapped reads (FPKM) is a simple
 
 Longer transcripts are more likely to be sequenced and counted multiple times, so FPKM adjusts for this bias by dividing the read count by the transcript length (in kilobases). FPKM uses the total number of mapped fragments, not reads, in the denominator. 
 
-FPKM =    #number of fragments mapping to a gene × 10^9
-        _________________________________________________________________________________
+FPKM =    number of fragments mapping to a gene × 10^9 /
 
-         #length of the gene (in base pairs) × total number of mapped reads in the sample
+         length of the gene (in base pairs) × total number of mapped reads in the sample
 
 FPKM values allow us to compare the gene expression levels within a sample and across different samples.
 
